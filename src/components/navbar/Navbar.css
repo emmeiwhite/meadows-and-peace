@@ -1,0 +1,6 @@
+.main-navigation{
+    display: flex;
+    list-style-type:none;
+    border: 1px solid #888;
+    justify-content: space-around;
+}

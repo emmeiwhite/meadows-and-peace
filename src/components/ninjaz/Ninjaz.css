@@ -1,0 +1,12 @@
+.card-userinfo{
+    border: 1px solid #333;
+    padding: 1rem;
+    margin: 1rem 0;
+    transition: all 3s ease-all;
+    color:#fff;
+}
+
+.card-userinfo:hover{
+    background: gray;
+    cursor: pointer;
+}
