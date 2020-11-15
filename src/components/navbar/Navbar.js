@@ -1,7 +1,8 @@
 import React from 'react'
+import Rainbow from './../../hoc/Rainbow'
 import './Navbar.css'
 
-export default function Navbar({logo}) {
+const Navbar = ({logo}) => {
     return (
         <div>
             <ul className="main-navigation">
@@ -21,3 +22,5 @@ export default function Navbar({logo}) {
         </div>
     )
 }
+
+export default Rainbow(Navbar)

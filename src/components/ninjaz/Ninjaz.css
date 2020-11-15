@@ -3,10 +3,10 @@
     padding: 1rem;
     margin: 1rem 0;
     transition: all 3s ease-all;
-    color:#fff;
+    color:green;
 }
 
 .card-userinfo:hover{
-    background: gray;
+    background: rgb(221, 181, 181);
     cursor: pointer;
 }
