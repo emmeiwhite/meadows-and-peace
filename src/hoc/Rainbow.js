@@ -7,7 +7,7 @@ const Rainbow = (WrappedComponent) =>{
     const style = {
         backgroundColor:randomColor
     }
-
+ 
     // Assume we are returning a super-charged component
     return (props)=>{
         return(

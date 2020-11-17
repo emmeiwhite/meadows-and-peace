@@ -1,5 +1,6 @@
 import React from 'react'
 import Rainbow from './../../hoc/Rainbow'
+import {Link} from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = ({logo}) => {
@@ -10,13 +11,13 @@ const Navbar = ({logo}) => {
                     {logo}
                 </li>
                 <li>
-                    <a>Home</a>
+                    <Link to="/" >Home</Link >
                 </li>
                 <li>
-                    <a>Contact</a>
+                    <Link to="/ninjaz" >Ninjas</Link >
                 </li>
                 <li>
-                    <a>About</a>
+                    <Link to="/posts" >Posts</Link >
                 </li>
             </ul>
         </div>

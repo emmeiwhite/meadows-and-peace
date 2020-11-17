@@ -24,6 +24,7 @@ export default class AddForm extends Component {
     render() {
         return (
             <div>
+                <h2>Add the Ninja</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="name">Name:</label>

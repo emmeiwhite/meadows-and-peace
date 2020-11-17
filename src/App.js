@@ -1,49 +1,26 @@
-import './App.css'
-import Navbar from './components/navbar/Navbar'
-import Test from './components/test/Test'
-import Ninjaz from './components/ninjaz/Ninjaz'
-import { Component } from 'react'
-import AddForm from './components/addform/AddForm'
+import "./App.css";
+import { Component } from "react";
+import Navbar from "./components/navbar/Navbar";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
+import Home from "./components/home/Home";
+import NinjazList from "./components/ninjaz-list/NinjazList";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
-  state={
-    ninjaz :[
-    { name: 'Ryu', age: 30, belt: 'black', id: 1 },
-    { name: 'Yoshi', age: 20, belt: 'green', id: 2 },
-    { name: 'Crystal', age: 25, belt: 'pink', id: 3 }
-  ]
- };
-
-  addNinja = (ninja)=>{
-    const newNinja = {...ninja, id:4}
-   this.setState({
-     ninjaz:[...this.state.ninjaz,newNinja]
-   })
-  }
-  
-  // handle Delete
-  handleDelete = (id)=>{
-    const updatedNinjaz = this.state.ninjaz.filter(ninja=>ninja.id!==id);
-
-    this.setState({
-      ninjaz:updatedNinjaz
-    });
-  }
-  render(){
-    const ninjaz = this.state.ninjaz && this.state.ninjaz.filter(ninja=>ninja.id>1).map(ninja=>{
-      return <Ninjaz ninja={ninja} key={ninja.id} handleDelete={this.handleDelete}/>
-    })
-    console.log(ninjaz);
+  render() {
     return (
-      <div className="App">
-        <Navbar logo="Rediscover"/>
-        {ninjaz}
-        
-        <h2>FORM </h2>
-        <AddForm 
-          addNinja={this.addNinja}
-        />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar logo="Rediscover" />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/ninjaz" component={NinjazList} />
+            <Route exact path="/posts" component={Posts} />
+            <Route path="/posts/:post_id" component={Post} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
