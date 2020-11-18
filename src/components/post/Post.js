@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import { deletePost } from "./../../actions/postActions";
 
 function Post({ post, deletePost, history }) {
   const handleBtnClick = (id) => {
@@ -19,7 +20,7 @@ function Post({ post, deletePost, history }) {
   );
 }
 
-/* 
+/* --- 
     ownProps refers to the component props, before we attach the addition props 
     from the redux store. And our ownProps are going to contain information about
     the routes. And we can grab id from the routes
@@ -35,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deletePost: (id) => {
-      dispatch({ type: "DELETE_POST", id });
+      dispatch(deletePost(id));
     },
   };
 };
