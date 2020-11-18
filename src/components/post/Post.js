@@ -1,33 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
-export default function Post({ match }) {
-  const [post, setPost] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    console.log(match.params.post_id);
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${match.params.post_id}`)
-      .then((post) => {
-        setLoading(false);
-        setPost(post.data);
-        console.log(post.data);
-      })
-      .catch((err) => {
-        setError(true);
-        setLoading(false);
-      });
-  }, []);
-
+function Post({ post }) {
+  console.log(post);
   return (
     <div className="post-card">
-      {loading && !error ? (
-        <p>loading ...</p>
-      ) : !loading && error ? (
-        <p>Error ...</p>
-      ) : (
+      {post && (
         <div className="card">
           <h1>{post.title}</h1>
           <p>{post.body}</p>
@@ -36,3 +14,18 @@ export default function Post({ match }) {
     </div>
   );
 }
+
+/* 
+    ownProps refers to the component props, before we attach the addition props 
+    from the redux store. And our ownProps are going to contain information about
+    the routes. And we can grab id from the routes
+*/
+const mapStateToProps = (state, ownProps) => {
+  let id = ownProps.match.params.post_id;
+  const post = state.posts.find((post) => post.id == id);
+  return {
+    post,
+  };
+};
+
+export default connect(mapStateToProps)(Post);
