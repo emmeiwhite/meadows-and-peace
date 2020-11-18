@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-function Post({ post, deletePost }) {
-  console.log(deletePost);
+function Post({ post, deletePost, history }) {
+  const handleBtnClick = (id) => {
+    deletePost(id); // dispatching action to reducer
+    history.push("/");
+  };
   return (
     <div className="post-card">
       {post && (
         <div className="card">
           <h1>{post.title}</h1>
           <p>{post.body}</p>
-          <button onClick={() => deletePost(post.id)}>Delete Post</button>
+          <button onClick={() => handleBtnClick(post.id)}>Delete Post</button>
         </div>
       )}
     </div>
